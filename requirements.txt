@@ -1,0 +1,2 @@
+openrgb-python==0.3.6
+WMI==1.5.1
