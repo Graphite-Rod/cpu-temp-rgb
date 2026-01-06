@@ -41,8 +41,8 @@ def mix_hsl(colorA: Tuple[int, int, int],
     )
 
 def fix(color: Tuple[int, int, int]):
+    #return (color[2], color[0], color[1]) #Uncomment and edit this if you have any troubles with incorrect color channels.
     return color
-    #return (color[2], color[0], color[1])
 
 def cpu_temp():
     try:
@@ -54,12 +54,12 @@ def cpu_temp():
         print(e)
         return 0
 
-colorA = (0, 0, 255)
-colorB = (255, 0, 0)
+colorA = (0, 0, 255) #Coldest color
+colorB = (255, 0, 0) #Hottest color
 
 while True:
     try:
-        color = RGBColor(*fix(mix_hsl(colorA, colorB, (cpu_temp()-40)/(90-40))))
+        color = RGBColor(*fix(mix_hsl(colorA, colorB, (cpu_temp()-40)/(90-40)))) #Change values here to alter the boundaries for mapping.
         #print(cpu_temp(), (cpu_temp()-40)/(90-40))
         for device in cli.devices:
             device.set_color(color)
